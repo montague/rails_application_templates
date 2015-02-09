@@ -1,5 +1,3 @@
-generate(:controller, "pages index")
-route "root to: 'pages#index'"
 # gems
 gem 'haml-rails'
 gem 'bootstrap-sass'
@@ -42,7 +40,10 @@ CODE
 web: bundle exec puma -C config/puma.rb
 CODE
 
-end
+end # end deploy on heroku block
+
+generate(:controller, "pages index")
+route "root to: 'pages#index'"
 
 after_bundle do
   git :init
