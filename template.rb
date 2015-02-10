@@ -2,6 +2,7 @@
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'puma'
+gem 'quiet_assets'
 if yes?('Install Devise?')
   gem 'devise'
 end
@@ -10,6 +11,12 @@ if yes?('Deploy on heroku?')
     gem 'rails_12factor'
   end
   gem 'rack-timeout'
+
+  environment %{
+  # quiet logging noise from Rack::Timeout
+  # https://github.com/heroku/rack-timeout#logging
+  Rack::Timeout.unregister_state_change_observer(:logger)
+  }, env: 'development'
 
   initializer 'timeout.rb', <<-CODE
 # recommended by heroku
