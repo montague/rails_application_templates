@@ -3,9 +3,16 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'puma'
 gem 'quiet_assets'
+
+gem_group :development, :test do
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+end
+
 if yes?('Install Devise?')
   gem 'devise'
 end
+
 if yes?('Deploy on heroku?')
   gem_group :production do
     gem 'rails_12factor'
