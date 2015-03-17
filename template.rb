@@ -56,7 +56,7 @@ CODE
 
 end # end deploy on heroku block
 
-if yes('Init empty repo?')
+if yes?('Init empty repo?')
   after_bundle do
     git :init
     git add: "."
