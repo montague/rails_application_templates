@@ -56,9 +56,6 @@ CODE
 
 end # end deploy on heroku block
 
-generate(:controller, "pages index")
-route "root to: 'pages#index'"
-
 if yes('Init empty repo?')
   after_bundle do
     git :init
@@ -66,3 +63,7 @@ if yes('Init empty repo?')
     git commit: %Q{ -m 'Initial' }
   end
 end
+
+generate(:controller, "pages home")
+route "root to: 'pages#home'"
+
