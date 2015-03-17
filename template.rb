@@ -59,8 +59,10 @@ end # end deploy on heroku block
 generate(:controller, "pages index")
 route "root to: 'pages#index'"
 
-after_bundle do
-  git :init
-  git add: "."
-  git commit: %Q{ -m 'Initial' }
+if yes('Init empty repo?')
+  after_bundle do
+    git :init
+    git add: "."
+    git commit: %Q{ -m 'Initial' }
+  end
 end
