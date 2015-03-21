@@ -9,6 +9,11 @@ gem_group :development, :test do
   gem 'spring-commands-rspec'
 end
 
+gem_group :development do
+  gem 'rack-mini-profiler'
+  gem 'meta_request'
+end
+
 if yes?('Install Devise?')
   gem 'devise'
 end
